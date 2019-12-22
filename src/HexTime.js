@@ -45,28 +45,26 @@ class HexTime extends PureComponent {
     let { hours, minutes, seconds, textColor } = this.state
     let hexTime = "#" + hours + minutes + seconds
     return hexTime && textColor ? (
-      <>
+      <div
+        className="hex-time"
+        style={{
+          transition: "all 1s",
+          color: textColor,
+          backgroundColor: hexTime,
+        }}
+      >
         <Helmet>
           <title>{hexTime}</title>
         </Helmet>
-        <div
-          className="hex-time"
-          style={{
-            transition: "all 1s",
-            color: textColor,
-            backgroundColor: hexTime,
-          }}
+        <span className="hex">{hexTime}</span>
+        <a
+          style={{ color: textColor }}
+          className="repo"
+          href={process.env.REACT_APP_REPO_URL}
         >
-          <span className="hex">{hexTime}</span>
-          <a
-            style={{ color: textColor }}
-            className="repo"
-            href={process.env.REACT_APP_REPO_URL}
-          >
-            {process.env.REACT_APP_REPO_URL}
-          </a>
-        </div>
-      </>
+          {process.env.REACT_APP_REPO_URL}
+        </a>
+      </div>
     ) : null
   }
 }
