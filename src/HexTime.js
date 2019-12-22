@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react"
 import { Helmet } from "react-helmet"
 
+import config from "./config.json"
+
 import "./HexTime.scss"
 
 class HexTime extends PureComponent {
@@ -10,8 +12,6 @@ class HexTime extends PureComponent {
     seconds: null,
     textColor: null,
   }
-
-  repo = "https://github.com/iamgnlc"
 
   setTime = (value) => {
     return String(value).length < 2 ? "0" + String(value) : String(value)
@@ -49,7 +49,7 @@ class HexTime extends PureComponent {
     return hexTime && textColor ? (
       <>
         <Helmet>
-          <title>HexTime</title>
+          <title>{hexTime}</title>
         </Helmet>
         <div
           className="hex-time"
@@ -59,11 +59,11 @@ class HexTime extends PureComponent {
             backgroundColor: hexTime,
           }}
         >
-          <span>{hexTime}</span>
+          <span className="hex">{hexTime}</span>
+          <a style={{ color: textColor }} className="repo" href={config.repo}>
+            {config.repo}
+          </a>
         </div>
-        <a style={{ color: textColor }} className="github" href={this.repo}>
-          {this.repo}
-        </a>
       </>
     ) : null
   }

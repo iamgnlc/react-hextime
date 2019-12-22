@@ -8,23 +8,24 @@ body,
 }
 
 .hex-time {
-  font-family: "Roboto", sans-serif;
-  font-size: 15vmin;
-  letter-spacing: 1vmin;
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
-  user-select: none;
-}
+  flex-direction: column;
 
-.github {
-  opacity: 0.125;
-  position: absolute;
-  bottom: 0.5rem;
-  right: 50%;
-  transform: translateX(50%);
-  text-decoration: none;
+  .hex {
+    font-family: "Roboto", sans-serif;
+    font-size: 15vmin;
+    letter-spacing: 1vmin;
+    pointer-events: none;
+    user-select: none;
+    margin: auto;
+  }
+  .repo {
+    opacity: 0.125;
+    text-decoration: none;
+    padding: 0.5rem;
+  }
 }

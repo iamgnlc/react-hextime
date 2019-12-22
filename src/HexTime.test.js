@@ -1,9 +1,11 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import React from "react"
+import { render } from "@testing-library/react"
+import HexTime from "./HexTime"
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+import config from "./config.json"
+
+test("renders learn react link", () => {
+  const { getByText } = render(<HexTime />)
+  const linkElement = getByText(config.repo)
+  expect(linkElement).toBeInTheDocument()
+})
