@@ -1,8 +1,6 @@
 import React, { PureComponent } from "react"
 import { Helmet } from "react-helmet"
 
-import config from "./config.json"
-
 import "./HexTime.scss"
 
 class HexTime extends PureComponent {
@@ -60,8 +58,12 @@ class HexTime extends PureComponent {
           }}
         >
           <span className="hex">{hexTime}</span>
-          <a style={{ color: textColor }} className="repo" href={config.repo}>
-            {config.repo}
+          <a
+            style={{ color: textColor }}
+            className="repo"
+            href={process.env.REACT_APP_REPO_URL}
+          >
+            {process.env.REACT_APP_REPO_URL}
           </a>
         </div>
       </>
