@@ -1,72 +1,82 @@
-import React, { PureComponent } from "react"
+import React, { useReducer, useEffect, useRef } from "react"
 import { Helmet } from "react-helmet"
+
+import { SET_TIME } from "./actions"
+import { reducer } from "./reducer"
 
 import "./HexTime.scss"
 
-class HexTime extends PureComponent {
-  state = {
-    hours: null,
-    minutes: null,
-    seconds: null,
-    textColor: null,
-  }
+const initialState = {
+  hours: null,
+  minutes: null,
+  seconds: null,
+  textColor: null,
+}
 
-  setTime = (value) => {
+const HexTime = () => {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const intervalRef = useRef(null)
+
+  const { hours, minutes, seconds, textColor } = state
+
+  const hexTime = "#" + hours + minutes + seconds
+
+  const setTime = (value) => {
     return String(value).length < 2 ? "0" + String(value) : String(value)
   }
 
-  setColors = () => {
+  useEffect(() => {
+    let interval = intervalRef.current
+    interval = setInterval(() => setColors(), 1000)
+
+    return function cleanup() {
+      clearInterval(interval)
+    }
+  })
+
+  const setColors = () => {
     var now = new Date()
 
-    let hours = this.setTime(now.getHours())
-    let minutes = this.setTime(now.getMinutes())
-    let seconds = this.setTime(now.getSeconds())
+    let hours = setTime(now.getHours())
+    let minutes = setTime(now.getMinutes())
+    let seconds = setTime(now.getSeconds())
 
     let textColor =
       hours * 0.299 + minutes * 0.587 + seconds * 0.114 > 186 ? "#000" : "#fff"
 
-    this.setState({
-      hours,
-      minutes,
-      seconds,
-      textColor,
+    dispatch({
+      type: SET_TIME,
+      state: {
+        hours,
+        minutes,
+        seconds,
+        textColor,
+      },
     })
   }
 
-  componentDidMount() {
-    this.interval = setInterval(() => this.setColors(), 1000)
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval)
-  }
-
-  render() {
-    let { hours, minutes, seconds, textColor } = this.state
-    let hexTime = "#" + hours + minutes + seconds
-    return hexTime && textColor ? (
-      <div
-        className="hex-time"
-        style={{
-          transition: "all 1s",
-          color: textColor,
-          backgroundColor: hexTime,
-        }}
+  return hexTime && textColor ? (
+    <div
+      className="hex-time"
+      style={{
+        transition: "all 1s",
+        color: textColor,
+        backgroundColor: hexTime,
+      }}
+    >
+      <Helmet>
+        <title>{hexTime}</title>
+      </Helmet>
+      <span className="hex">{hexTime}</span>
+      <a
+        style={{ color: textColor }}
+        className="repo"
+        href={process.env.REACT_APP_REPO_URL}
       >
-        <Helmet>
-          <title>{hexTime}</title>
-        </Helmet>
-        <span className="hex">{hexTime}</span>
-        <a
-          style={{ color: textColor }}
-          className="repo"
-          href={process.env.REACT_APP_REPO_URL}
-        >
-          {process.env.REACT_APP_REPO_URL}
-        </a>
-      </div>
-    ) : null
-  }
+        {process.env.REACT_APP_REPO_URL}
+      </a>
+    </div>
+  ) : null
 }
 
 export default HexTime
