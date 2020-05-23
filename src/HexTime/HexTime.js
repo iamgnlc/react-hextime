@@ -1,8 +1,8 @@
 import React, { useReducer, useEffect, useRef } from "react"
 import { Helmet } from "react-helmet"
 
-import { SET_TIME } from "./actions"
-import { reducer } from "./reducer"
+import { SET_TIME } from "../actions"
+import { reducer } from "../reducer"
 
 import "./HexTime.scss"
 
@@ -22,7 +22,8 @@ const HexTime = () => {
   const hexTime = "#" + hours + minutes + seconds
 
   const setTime = (value) => {
-    return String(value).length < 2 ? "0" + String(value) : String(value)
+    value = String(value)
+    return value.length < 2 ? "0" + value : value
   }
 
   useEffect(() => {
@@ -71,9 +72,9 @@ const HexTime = () => {
       <a
         style={{ color: textColor }}
         className="repo"
-        href={process.env.REACT_APP_REPO_URL}
+        href={process.env.REACT_APP_GITHUB_URL}
       >
-        {process.env.REACT_APP_REPO_URL}
+        {process.env.REACT_APP_GITHUB_URL}
       </a>
     </div>
   ) : null

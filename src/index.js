@@ -2,9 +2,12 @@ import React from "react"
 import ReactDOM from "react-dom"
 import * as Sentry from "@sentry/browser"
 
+import HexTime from "./HexTime/"
+
 import "./index.css"
-import HexTime from "./HexTime"
 import * as serviceWorker from "./serviceWorker"
+
+if (process.env.NODE_ENV === "production") require("disable-react-devtools")
 
 // Sentry.
 Sentry.init({
