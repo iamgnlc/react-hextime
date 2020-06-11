@@ -11,16 +11,15 @@
     "@testing-library/user-event": "^7.1.2",
     "disable-react-devtools": "^1.0.0",
     "node-sass": "^4.13.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1",
-    "react-scripts": "3.3.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "PORT=3032 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "predeploy": "rm -rf build && rm -rf server && yarn build",
     "deploy": "firebase deploy"
   },
