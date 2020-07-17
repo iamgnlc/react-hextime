@@ -1,22 +1,24 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import * as Sentry from "@sentry/browser"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import * as Sentry from '@sentry/browser';
 
-import HexTime from "./HexTime/"
+import HexTime from './HexTime/';
 
-import "./index.css"
-import * as serviceWorker from "./serviceWorker"
+import disableDevTools from './disableDevTools';
 
-if (process.env.NODE_ENV === "production") require("disable-react-devtools")
+import './index.css';
+import * as serviceWorker from './serviceWorker';
 
 // Sentry.
 Sentry.init({
   dsn: `https://${process.env.REACT_APP_SENTRY_KEY}@sentry.io/${process.env.REACT_APP_SENTRY_PID}`,
-})
+});
 
-ReactDOM.render(<HexTime />, document.getElementById("root"))
+disableDevTools(['production']);
+
+ReactDOM.render(<HexTime />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister()
+serviceWorker.unregister();

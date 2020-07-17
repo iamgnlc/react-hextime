@@ -1,49 +1,49 @@
-import React, { useReducer, useEffect, useRef } from "react"
-import { Helmet } from "react-helmet"
+import React, { useReducer, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
 
-import { SET_TIME } from "../actions"
-import { reducer } from "../reducer"
+import { SET_TIME } from '../actions';
+import { reducer } from '../reducer';
 
-import "./HexTime.scss"
+import './HexTime.scss';
 
 const initialState = {
   hours: null,
   minutes: null,
   seconds: null,
   textColor: null,
-}
+};
 
 const HexTime = () => {
-  const [state, dispatch] = useReducer(reducer, initialState)
-  const intervalRef = useRef(null)
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const intervalRef = useRef(null);
 
-  const { hours, minutes, seconds, textColor } = state
+  const { hours, minutes, seconds, textColor } = state;
 
-  const hexTime = "#" + hours + minutes + seconds
+  const hexTime = '#' + hours + minutes + seconds;
 
   const setTime = (value) => {
-    value = String(value)
-    return value.length < 2 ? "0" + value : value
-  }
+    value = String(value);
+    return value.length < 2 ? '0' + value : value;
+  };
 
   useEffect(() => {
-    let interval = intervalRef.current
-    interval = setInterval(() => setColors(), 1000)
+    let interval = intervalRef.current;
+    interval = setInterval(() => setColors(), 1000);
 
     return function cleanup() {
-      clearInterval(interval)
-    }
-  })
+      clearInterval(interval);
+    };
+  });
 
   const setColors = () => {
-    var now = new Date()
+    var now = new Date();
 
-    let hours = setTime(now.getHours())
-    let minutes = setTime(now.getMinutes())
-    let seconds = setTime(now.getSeconds())
+    let hours = setTime(now.getHours());
+    let minutes = setTime(now.getMinutes());
+    let seconds = setTime(now.getSeconds());
 
     let textColor =
-      hours * 0.299 + minutes * 0.587 + seconds * 0.114 > 186 ? "#000" : "#fff"
+      hours * 0.299 + minutes * 0.587 + seconds * 0.114 > 186 ? '#000' : '#fff';
 
     dispatch({
       type: SET_TIME,
@@ -53,14 +53,14 @@ const HexTime = () => {
         seconds,
         textColor,
       },
-    })
-  }
+    });
+  };
 
   return hexTime && textColor ? (
     <div
       className="hex-time"
       style={{
-        transition: "all 1s",
+        transition: 'all 1s',
         color: textColor,
         backgroundColor: hexTime,
       }}
@@ -77,7 +77,7 @@ const HexTime = () => {
         {process.env.REACT_APP_GITHUB_URL}
       </a>
     </div>
-  ) : null
-}
+  ) : null;
+};
 
-export default HexTime
+export default HexTime;

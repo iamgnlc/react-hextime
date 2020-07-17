@@ -1,4 +1,4 @@
-import { SET_TIME } from "./actions"
+import { SET_TIME } from './actions';
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -6,8 +6,8 @@ export const reducer = (state, action) => {
       return {
         ...state,
         ...action.state,
-      }
+      };
     default:
-      return false
+      return false;
   }
-}
+};
