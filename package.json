@@ -1,7 +1,10 @@
 {
   "name": "react-hextime",
   "version": "0.1.0",
-  "author": "iamgnlc (https://github.com/iamgnlc)",
+  "author": {
+    "name": "GNLC",
+    "url": "https://github.com/iamgnlc"
+  },
   "license": "MIT",
   "private": true,
   "dependencies": {
