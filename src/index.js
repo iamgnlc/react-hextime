@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/react';
+import { Integrations } from '@sentry/tracing';
 
 import HexTime from './HexTime/';
 
@@ -11,7 +12,9 @@ import * as serviceWorker from './serviceWorker';
 
 // Sentry.
 Sentry.init({
-  dsn: `https://${process.env.REACT_APP_SENTRY_KEY}@sentry.io/${process.env.REACT_APP_SENTRY_PID}`,
+  dsn: `https://${process.env.REACT_APP_SENTRY_KEY}.ingest.sentry.io/${process.env.REACT_APP_SENTRY_PID}`,
+  integrations: [new Integrations.BrowserTracing()],
+  tracesSampleRate: 1.0,
 });
 
 disableDevTools(['production']);
@@ -21,4 +24,4 @@ ReactDOM.render(<HexTime />, document.getElementById('root'));
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();
