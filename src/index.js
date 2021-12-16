@@ -19,7 +19,13 @@ Sentry.init({
 
 disableDevTools(['production']);
 
-ReactDOM.render(<HexTime />, document.getElementById('root'));
+const rootElement = document.getElementById('root');
+
+if (rootElement.hasChildNodes()) {
+  ReactDOM.hydrate(<HexTime />, rootElement);
+} else {
+  ReactDOM.render(<HexTime />, rootElement);
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

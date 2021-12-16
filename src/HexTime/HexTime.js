@@ -56,15 +56,16 @@ const HexTime = () => {
     });
   };
 
-  return hexTime && textColor ? (
-    <div
-      className="hex-time"
-      style={{
-        transition: 'all 1s',
-        color: textColor,
-        backgroundColor: hexTime,
-      }}
-    >
+  const style = {
+    transition: 'all 1s',
+    color: textColor,
+    backgroundColor: hexTime,
+  };
+
+  if (!hexTime || !textColor) return null;
+
+  return (
+    <div className="hex-time" style={style}>
       <Helmet>
         <title>{hexTime}</title>
       </Helmet>
@@ -77,7 +78,7 @@ const HexTime = () => {
         {process.env.REACT_APP_GITHUB_URL}
       </a>
     </div>
-  ) : null;
+  );
 };
 
 export default HexTime;
