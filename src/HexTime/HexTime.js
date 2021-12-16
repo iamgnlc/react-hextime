@@ -26,15 +26,6 @@ const HexTime = () => {
     return value.length < 2 ? '0' + value : value;
   };
 
-  useEffect(() => {
-    let interval = intervalRef.current;
-    interval = setInterval(() => setColors(), 1000);
-
-    return function cleanup() {
-      clearInterval(interval);
-    };
-  });
-
   const setColors = () => {
     var now = new Date();
 
@@ -56,13 +47,22 @@ const HexTime = () => {
     });
   };
 
+  useEffect(() => {
+    let interval = intervalRef.current;
+    interval = setInterval(() => setColors(), 1000);
+
+    return function cleanup() {
+      clearInterval(interval);
+    };
+  });
+
   const style = {
     transition: 'all 1s',
     color: textColor,
     backgroundColor: hexTime,
   };
 
-  if (!hexTime || !textColor) return null;
+  if (!hexTime || !textColor) return <div className="hex-time">Loading</div>;
 
   return (
     <div className="hex-time" style={style}>
