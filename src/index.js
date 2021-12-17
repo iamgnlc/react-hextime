@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Sentry from '@sentry/react';
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 import { Integrations } from '@sentry/tracing';
 
 import App from './App';
-
-import disableDevTools from './disableDevTools';
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
@@ -17,7 +16,7 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-disableDevTools(['production']);
+if (['production'].includes(process.env.NODE_ENV)) disableReactDevTools();
 
 const rootElement = document.getElementById('root');
 
