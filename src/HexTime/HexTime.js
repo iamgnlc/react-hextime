@@ -1,6 +1,7 @@
 import React, { useReducer, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 
+import Loading from '../Loading';
 import { SET_TIME } from '../actions';
 import { reducer } from '../reducer';
 
@@ -62,7 +63,12 @@ const HexTime = () => {
     backgroundColor: hexTime,
   };
 
-  if (!hexTime || !textColor) return <div className="hex-time">Loading</div>;
+  if (!hexTime || !textColor)
+    return (
+      <div className="hex-time">
+        <Loading />
+      </div>
+    );
 
   return (
     <div className="hex-time" style={style}>

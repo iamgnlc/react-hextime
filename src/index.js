@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 
-import HexTime from './HexTime/';
+import App from './App';
 
 import disableDevTools from './disableDevTools';
 
@@ -22,9 +22,9 @@ disableDevTools(['production']);
 const rootElement = document.getElementById('root');
 
 if (rootElement.hasChildNodes()) {
-  ReactDOM.hydrate(<HexTime />, rootElement);
+  ReactDOM.hydrate(<App />, rootElement);
 } else {
-  ReactDOM.render(<HexTime />, rootElement);
+  ReactDOM.render(<App />, rootElement);
 }
 
 // If you want your app to work offline and load faster, you can change
