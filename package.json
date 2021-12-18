@@ -11,27 +11,29 @@
     "@fvilers/disable-react-devtools": "^1.2.1",
     "@sentry/react": "^6.16.1",
     "@sentry/tracing": "^6.16.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "node-sass": "^4.13.0",
     "react": "^17.0.2",
     "react-cache-buster": "^0.1.6",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-loading": "^2.0.3",
-    "react-scripts": "3.4.1",
+    "react-scripts": "3.4.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
     "react-spa-prerender": "^1.0.12"
   },
   "scripts": {
-    "generate-meta-tag": "node ./node_modules/react-cache-buster/dist/generate-meta-tag.js",
-    "start": "PORT=3032 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "prebuild": "yarn generate-meta-tag",
+    "deploy": "firebase deploy",
+    "generate-meta-tag": "node ./node_modules/react-cache-buster/dist/generate-meta-tag.js",
     "postbuild": "react-spa-prerender",
+    "prebuild": "yarn generate-meta-tag",
     "predeploy": "rm -rf build && rm -rf server && yarn build",
-    "deploy": "firebase deploy"
+    "start": "PORT=3032 react-scripts start",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"

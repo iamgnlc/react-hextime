@@ -28,7 +28,7 @@ const HexTime = () => {
   };
 
   const setColors = () => {
-    var now = new Date();
+    const now = new Date();
 
     let hours = setTime(now.getHours());
     let minutes = setTime(now.getMinutes());
@@ -47,6 +47,10 @@ const HexTime = () => {
       },
     });
   };
+
+  useEffect(() => {
+    if (!state.textColor) setColors();
+  });
 
   useEffect(() => {
     let interval = intervalRef.current;
@@ -74,6 +78,7 @@ const HexTime = () => {
     <div className="hex-time" style={style}>
       <Helmet>
         <title>{hexTime}</title>
+        <meta name="robots" content="noindex" />
       </Helmet>
       <span className="hex">{hexTime}</span>
       <a
