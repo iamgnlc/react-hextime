@@ -7,6 +7,12 @@ body,
   font-family: Arial, sans-serif;
 }
 
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .hex-time {
   height: 100%;
   width: 100%;
@@ -17,7 +23,7 @@ body,
 
   .hex {
     font-family: 'Roboto', sans-serif;
-    font-size: 15vmin;
+    font-size: 17.5vmin;
     letter-spacing: 1vmin;
     pointer-events: none;
     user-select: none;

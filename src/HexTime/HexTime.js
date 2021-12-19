@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useRef } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 import Loading from '../Loading';
@@ -23,7 +23,6 @@ const Head = ({ title }) => (
 
 const HexTime = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const intervalRef = useRef(null);
 
   const { hours, minutes, seconds, textColor } = state;
 
@@ -37,11 +36,11 @@ const HexTime = () => {
   const setColors = () => {
     const now = new Date();
 
-    let hours = setTime(now.getHours());
-    let minutes = setTime(now.getMinutes());
-    let seconds = setTime(now.getSeconds());
+    const hours = setTime(now.getHours());
+    const minutes = setTime(now.getMinutes());
+    const seconds = setTime(now.getSeconds());
 
-    let textColor =
+    const textColor =
       hours * 0.299 + minutes * 0.587 + seconds * 0.114 > 186 ? '#000' : '#fff';
 
     dispatch({
@@ -60,8 +59,7 @@ const HexTime = () => {
   // });
 
   useEffect(() => {
-    let interval = intervalRef.current;
-    interval = setInterval(() => setColors(), 1000);
+    let interval = setInterval(() => setColors(), 1000);
 
     return function cleanup() {
       clearInterval(interval);
