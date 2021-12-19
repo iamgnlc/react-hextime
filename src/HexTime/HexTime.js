@@ -14,6 +14,13 @@ const initialState = {
   textColor: null,
 };
 
+const Head = ({ title }) => (
+  <Helmet>
+    <title>{title}</title>
+    <meta name="robots" content="noindex" />
+  </Helmet>
+);
+
 const HexTime = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const intervalRef = useRef(null);
@@ -48,9 +55,9 @@ const HexTime = () => {
     });
   };
 
-  useEffect(() => {
-    if (!state.textColor) setColors();
-  });
+  // useEffect(() => {
+  //   if (!state.textColor) setColors();
+  // });
 
   useEffect(() => {
     let interval = intervalRef.current;
@@ -70,16 +77,14 @@ const HexTime = () => {
   if (!hexTime || !textColor)
     return (
       <div className="hex-time">
+        <Head title="HexTime" />
         <Loading />
       </div>
     );
 
   return (
     <div className="hex-time" style={style}>
-      <Helmet>
-        <title>{hexTime}</title>
-        <meta name="robots" content="noindex" />
-      </Helmet>
+      <Head title={hexTime} />
       <span className="hex">{hexTime}</span>
       <a
         style={{ color: textColor }}
