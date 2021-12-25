@@ -54,10 +54,6 @@ const HexTime = () => {
     });
   };
 
-  // useEffect(() => {
-  //   if (!state.textColor) setColors();
-  // });
-
   useEffect(() => {
     let interval = setInterval(() => setColors(), 1000);
 
@@ -67,7 +63,7 @@ const HexTime = () => {
   });
 
   const style = {
-    transition: 'all 1s',
+    transition: 'all .75s',
     color: textColor,
     backgroundColor: hexTime,
   };

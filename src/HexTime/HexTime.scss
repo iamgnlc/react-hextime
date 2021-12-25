@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100&display=swap');
 
+$white: #fff;
+
 html,
 body,
 #root {
@@ -11,6 +13,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $white;
 }
 
 .hex-time {
@@ -28,6 +31,7 @@ body {
     pointer-events: none;
     user-select: none;
     margin: auto;
+    color: $white;
   }
   .repo {
     opacity: 0.125;
