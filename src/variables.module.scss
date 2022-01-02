@@ -1,0 +1,9 @@
+$white: #fff;
+$black: #000;
+$transition: all 0.75s;
+
+:export {
+  white: $white;
+  black: $black;
+  transition: $transition;
+}

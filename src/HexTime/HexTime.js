@@ -5,6 +5,7 @@ import Loading from '../Loading';
 import { SET_TIME } from '../actions';
 import { reducer } from '../reducer';
 
+import variables from '../variables.module.scss';
 import './HexTime.scss';
 
 const initialState = {
@@ -14,10 +15,13 @@ const initialState = {
   textColor: null,
 };
 
+console.log(variables);
+
 const Head = ({ title }) => (
   <Helmet>
     <title>{title}</title>
     <meta name="robots" content="noindex" />
+    <meta name="author" content="GNLC" />
   </Helmet>
 );
 
@@ -41,7 +45,9 @@ const HexTime = () => {
     const seconds = setTime(now.getSeconds());
 
     const textColor =
-      hours * 0.299 + minutes * 0.587 + seconds * 0.114 > 186 ? '#000' : '#fff';
+      hours * 0.299 + minutes * 0.587 + seconds * 0.114 > 186
+        ? variables.black
+        : variables.white;
 
     dispatch({
       type: SET_TIME,
@@ -63,7 +69,7 @@ const HexTime = () => {
   });
 
   const style = {
-    transition: 'all .75s',
+    transition: variables.transition,
     color: textColor,
     backgroundColor: hexTime,
   };
