@@ -15,8 +15,6 @@ const initialState = {
   textColor: null,
 };
 
-console.log(variables);
-
 const Head = ({ title }) => (
   <Helmet>
     <title>{title}</title>
