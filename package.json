@@ -1,6 +1,6 @@
 {
   "name": "react-hextime",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "author": {
     "name": "GNLC",
     "url": "https://github.com/iamgnlc"
@@ -27,11 +27,12 @@
   },
   "scripts": {
     "build": "react-scripts build",
+    "clean": "rm -rf build && rm -rf server",
     "deploy": "firebase deploy",
     "generate-meta-tag": "node ./node_modules/react-cache-buster/dist/generate-meta-tag.js",
     "postbuild": "react-spa-prerender",
     "prebuild": "yarn generate-meta-tag",
-    "predeploy": "rm -rf build && rm -rf server && yarn build",
+    "predeploy": "yarn clean && yarn version --patch && yarn build",
     "start": "PORT=3032 react-scripts start",
     "test": "react-scripts test"
   },
