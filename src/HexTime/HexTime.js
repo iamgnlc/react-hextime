@@ -20,6 +20,8 @@ const Head = ({ title }) => (
     <title>{title}</title>
     <meta name="robots" content="noindex" />
     <meta name="author" content="GNLC" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </Helmet>
 );
 
