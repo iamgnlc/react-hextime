@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, { hydrateRoot } from 'react-dom/client';
 import * as Sentry from '@sentry/react';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 import { Integrations } from '@sentry/tracing';
@@ -17,12 +17,19 @@ Sentry.init({
 
 if (['production'].includes(process.env.NODE_ENV)) disableReactDevTools();
 
-const rootElement = document.getElementById('root');
+const rootElement = document?.getElementById('root');
+const root = ReactDOM.createRoot(rootElement);
+
+const Root = () => (
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
 if (rootElement.hasChildNodes()) {
-  ReactDOM.hydrate(<App />, rootElement);
+  hydrateRoot(rootElement, <Root />);
 } else {
-  ReactDOM.render(<App />, rootElement);
+  root.render(<Root />);
 }
 
 // If you want your app to work offline and load faster, you can change

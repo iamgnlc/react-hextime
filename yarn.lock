@@ -8877,13 +8877,12 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
-react-cache-buster@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/react-cache-buster/-/react-cache-buster-0.1.6.tgz#4b1709f3bacf461c3c89bf4ec2dd89c194b8d620"
-  integrity sha512-+ADgfJbrl7XGdPtmnGEgWIOM9t5zWD4ywkfX7Hm7kI4TrezH8TVI2WgZf+DeVQhAq9nZpRQsewU+8naDKPZIeQ==
+react-cache-buster@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/react-cache-buster/-/react-cache-buster-0.1.8.tgz#5245e09fb69c246682e86eb4ddf47f925cd1bdaa"
+  integrity sha512-N7BMnz2MUC++oXUzcYXsGn0WsIBDe5rRyT8W6O7L32CjcbgnuxhxNjc9T+Y56zdlSdY5nde3PTmZSktFv3V9IQ==
   dependencies:
     compare-versions "^4.1.2"
-    prop-types "^15.7.2"
 
 react-dev-utils@^10.2.1:
   version "10.2.1"
@@ -8915,13 +8914,13 @@ react-dev-utils@^10.2.1:
     strip-ansi "6.0.0"
     text-table "0.2.0"
 
-react-dom@^18.0.0:
-  version "18.0.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.0.0.tgz#26b88534f8f1dbb80853e1eabe752f24100d8023"
-  integrity sha512-XqX7uzmFo0pUceWFCt7Gff6IyIMzFUn7QMZrbrQfGxtaxXZIcGQzoNpRLE3fQLnS4XzLLPMZX2T9TRcSrasicw==
+react-dom@^18.0.2:
+  version "18.2.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
+  integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
   dependencies:
     loose-envify "^1.1.0"
-    scheduler "^0.21.0"
+    scheduler "^0.23.0"
 
 react-error-overlay@^6.0.7:
   version "6.0.7"
@@ -9018,18 +9017,18 @@ react-side-effect@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"
   integrity sha512-IgmcegOSi5SNX+2Snh1vqmF0Vg/CbkycU9XZbOHJlZ6kMzTmi3yc254oB1WCkgA7OQtIAoLmcSFuHTc/tlcqXg==
 
-react-spa-prerender@^1.0.12:
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/react-spa-prerender/-/react-spa-prerender-1.0.12.tgz#e69c64d53c863ef28bc295e69e9d95b9d3f65b95"
-  integrity sha512-bxG+nBnb4pF9k8bxXl+tYk3ids4OaMjoiEIY5Z9UG4jVQACh1FRSIDWIZT4zccgdZkMaSOwga68egVppewX4PA==
+react-spa-prerender@^1.0.14:
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/react-spa-prerender/-/react-spa-prerender-1.0.14.tgz#bcc7c76cb14334a630c0324d914aca6bf536aa92"
+  integrity sha512-EJhXZjP85x2VmMf+7/tE90kisK7a5tCm8ri//HA9H+kGA9Ncxu2qXq8TU6oepJnsHDBMqz31atypctfw2a4Mrw==
   dependencies:
     express "^4.17.1"
     puppeteer "10.4.0"
 
-react@^18.0.0:
-  version "18.0.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-18.0.0.tgz#b468736d1f4a5891f38585ba8e8fb29f91c3cb96"
-  integrity sha512-x+VL6wbT4JRVPm7EGxXhZ8w8LTROaxPXOqhlGyVSrv0sB1jkyFGgXxJ8LVoPRLvPR6/CIZGFmfzqUa2NYeMr2A==
+react@^18.0.2:
+  version "18.2.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
+  integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
 
@@ -9537,10 +9536,10 @@ saxes@^3.1.9:
   dependencies:
     xmlchars "^2.1.1"
 
-scheduler@^0.21.0:
-  version "0.21.0"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.21.0.tgz#6fd2532ff5a6d877b6edb12f00d8ab7e8f308820"
-  integrity sha512-1r87x5fz9MXqswA2ERLo0EbOAU74DpIUO090gIasYTqlVoJeMcl+Z1Rg7WHz+qtPujhS/hGIt9kxZOYBV3faRQ==
+scheduler@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.23.0.tgz#ba8041afc3d30eb206a487b6b384002e4e61fdfe"
+  integrity sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==
   dependencies:
     loose-envify "^1.1.0"
 
