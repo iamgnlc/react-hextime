@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import HexTime from './';
+import HexTime from '.';
 
 test('renders time', async () => {
   const { container } = render(<HexTime />);

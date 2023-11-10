@@ -2,7 +2,7 @@ import React from 'react';
 import CacheBuster from 'react-cache-buster';
 
 import { version } from '../package.json';
-import HexTime from './HexTime/';
+import HexTime from './HexTime';
 import Loading from './Loading';
 
 const App = () => {
