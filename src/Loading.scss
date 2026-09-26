@@ -1,0 +1,26 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .loading-bubble {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0.25rem;
+    border-radius: 50%;
+    background-color: #ddd;
+    animation: bubble-pulse 1.2s ease-in-out infinite;
+  }
+}
+
+@keyframes bubble-pulse {
+  0%,
+  100% {
+    transform: scale(0.4);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

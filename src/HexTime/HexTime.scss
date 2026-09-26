@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:100&display=block');
+@use '../variables.module.scss' as *;
 
-@import '../variables.module.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto:100&display=block');
 
 html,
 body,

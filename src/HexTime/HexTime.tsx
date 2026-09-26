@@ -1,5 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import { useEffect, useReducer } from 'react';
 
 import Loading from '../Loading';
 import { SET_TIME } from '../actions';
@@ -15,27 +14,25 @@ const initialState = {
   textColor: null,
 };
 
-const Head = ({ title }) => (
-  <Helmet>
-    <title>{title}</title>
-    <meta name="robots" content="noindex" />
-    <meta name="author" content="GNLC" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  </Helmet>
-);
+const setTime = (value: number) => {
+  const time = String(value);
+  return time.length < 2 ? `0${time}` : time;
+};
+
+const Head = ({ title }: { title: string }) => {
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+
+  return null;
+};
 
 const HexTime = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { hours, minutes, seconds, textColor } = state;
 
-  const hexTime = '#' + hours + minutes + seconds;
-
-  const setTime = (value) => {
-    value = String(value);
-    return value.length < 2 ? '0' + value : value;
-  };
+  const hexTime = `#${hours}${minutes}${seconds}`;
 
   const setColors = () => {
     const now = new Date();
@@ -45,7 +42,10 @@ const HexTime = () => {
     const seconds = setTime(now.getSeconds());
 
     const textColor =
-      hours * 0.299 + minutes * 0.587 + seconds * 0.114 > 186
+      Number(hours) * 0.299 +
+        Number(minutes) * 0.587 +
+        Number(seconds) * 0.114 >
+      186
         ? variables.black
         : variables.white;
 
@@ -61,17 +61,19 @@ const HexTime = () => {
   };
 
   useEffect(() => {
-    let interval = setInterval(() => setColors(), 1000);
+    setColors();
+
+    const interval = setInterval(() => setColors(), 1000);
 
     return function cleanup() {
       clearInterval(interval);
     };
-  });
+  }, []);
 
   const style = {
     transition: variables.transition,
-    color: textColor,
-    backgroundColor: hexTime,
+    color: textColor ?? undefined,
+    backgroundColor: textColor ? hexTime : undefined,
   };
 
   if (!hexTime || !textColor)
@@ -89,9 +91,9 @@ const HexTime = () => {
       <a
         style={{ color: textColor }}
         className="repo"
-        href={process.env.REACT_APP_GITHUB_URL}
+        href={import.meta.env.VITE_GITHUB_URL}
       >
-        {process.env.REACT_APP_GITHUB_URL}
+        {import.meta.env.VITE_GITHUB_URL}
       </a>
     </div>
   );

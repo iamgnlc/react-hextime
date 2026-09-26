@@ -7,48 +7,41 @@
   },
   "license": "MIT",
   "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm run generate-meta-tag && tsc --noEmit && vite build",
+    "ci": "sh ci.sh",
+    "clean": "rm -rf dist",
+    "deploy": "firebase deploy",
+    "dev": "vite --port 3032",
+    "generate-meta-tag": "node ./scripts/generate-meta-tag.mjs",
+    "predeploy": "npm run clean && npm version --no-git-tag-version patch && npm run build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
     "@fvilers/disable-react-devtools": "^1.2.1",
-    "@sentry/react": "^6.16.1",
-    "@sentry/tracing": "^6.16.1",
-    "react": "^18.0.2",
+    "@sentry/react": "^11.0.0",
+    "react": "^19.3.0",
     "react-cache-buster": "^0.1.8",
-    "react-dom": "^18.0.2",
-    "react-helmet": "^6.1.0",
-    "react-loading": "^2.0.3",
-    "react-scripts": "3.4.1"
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "react-spa-prerender": "^1.0.14",
-    "sass": "^1.54.8"
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "jsdom": "^30.1.1",
+    "sass": "^1.105.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.6",
+    "vitest": "^5.0.2"
   },
-  "scripts": {
-    "build": "react-scripts build",
-    "clean": "rm -rf build && rm -rf server",
-    "deploy": "firebase deploy",
-    "generate-meta-tag": "node ./node_modules/react-cache-buster/dist/generate-meta-tag.js",
-    "postbuild": "react-spa-prerender",
-    "prebuild": "yarn generate-meta-tag",
-    "predeploy": "yarn clean && yarn version --patch && yarn build",
-    "start": "PORT=3032 react-scripts start",
-    "test": "react-scripts test"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true,
+    "esbuild@0.28.2": true
   }
 }
